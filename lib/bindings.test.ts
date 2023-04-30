@@ -18,7 +18,7 @@ const defaultOpenOptions: OpenOptions = {
   hupcl: false,
   lock: true,
   parity: 'none',
-  rtscts: false,
+  cts: false,
   stopBits: 1,
   xany: false,
   xoff: false,

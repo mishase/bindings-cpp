@@ -56,7 +56,7 @@ export const LinuxBinding: LinuxBindingInterface = {
       lock: true,
       stopBits: 1,
       parity: 'none',
-      rtscts: false,
+      cts: false,
       xon: false,
       xoff: false,
       xany: false,

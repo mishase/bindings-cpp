@@ -192,7 +192,7 @@ int setup(int fd, OpenBaton *data) {
 
   options.c_cflag &= ~(CRTSCTS);
 
-  if (data->rtscts) {
+  if (data->cts) {
     options.c_cflag |= CRTSCTS;
     // evaluate specific flow control options
   }

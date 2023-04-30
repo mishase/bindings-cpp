@@ -10,7 +10,7 @@ export interface WindowsOpenOptions extends OpenOptions {
   /** Device parity defaults to none */
   parity?: 'none' | 'even' | 'odd' | 'mark' |'space',
   /** RTS mode defaults to handshake */
-  rtsMode?: 'handshake' | 'enable' | 'toggle'
+  rtsMode?: 'handshake' | 'enable' | 'toggle' | 'disable'
 }
 
 export type WindowsBindingInterface = BindingInterface<WindowsPortBinding, WindowsOpenOptions>
@@ -52,7 +52,7 @@ export const WindowsBinding: WindowsBindingInterface = {
       lock: true,
       stopBits: 1,
       parity: 'none',
-      rtscts: false,
+      cts: false,
       rtsMode: 'handshake',
       xon: false,
       xoff: false,
