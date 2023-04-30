@@ -55,7 +55,7 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig-build.json",
+    "build": "tsc -p tsconfig-build.json",
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --target 14.0.0 --force --strip --verbose",
     "prebuildify-cross": "prebuildify-cross --napi --target 14.0.0 --force --strip --verbose",
@@ -66,7 +66,8 @@
     "test:arduino": "TEST_PORT=$(./bin/find-arduino.ts) npm test",
     "test:watch": "mocha -w",
     "semantic-release": "semantic-release",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "prepare": "npm run build"
   },
   "publishConfig": {
     "access": "public"
