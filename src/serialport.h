@@ -49,7 +49,8 @@ enum SerialPortStopBits {
 enum SerialPortRtsMode {
   SERIALPORT_RTSMODE_ENABLE     = 1,
   SERIALPORT_RTSMODE_HANDSHAKE  = 2,
-  SERIALPORT_RTSMODE_TOGGLE     = 3
+  SERIALPORT_RTSMODE_TOGGLE     = 3,
+  SERIALPORT_RTSMODE_DISABLE	= 4
 };
 
 SerialPortParity ToParityEnum(const Napi::String& str);
@@ -65,7 +66,7 @@ struct OpenBaton : public Napi::AsyncWorker {
   int result = 0;
   int baudRate = 0;
   int dataBits = 0;
-  bool rtscts = false;
+  bool cts = false;
   bool xon = false;
   bool xoff = false;
   bool xany = false;

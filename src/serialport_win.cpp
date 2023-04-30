@@ -131,7 +131,6 @@ void OpenBaton::Execute() {
 
 
   dcb.fOutxDsrFlow = FALSE;
-  dcb.fOutxCtsFlow = FALSE;
 
   if (xon) {
     dcb.fOutX = TRUE;
@@ -145,21 +144,25 @@ void OpenBaton::Execute() {
     dcb.fInX = FALSE;
   }
 
-  if (rtscts) {
-    switch (rtsMode) {
-      case SERIALPORT_RTSMODE_ENABLE:
-        dcb.fRtsControl = RTS_CONTROL_ENABLE;
-        break;
-      case SERIALPORT_RTSMODE_HANDSHAKE:
-        dcb.fRtsControl = RTS_CONTROL_HANDSHAKE;
-        break;
-      case SERIALPORT_RTSMODE_TOGGLE:
-        dcb.fRtsControl = RTS_CONTROL_TOGGLE;
-        break;
-    }
+  if (cts) {
     dcb.fOutxCtsFlow = TRUE;
   } else {
-    dcb.fRtsControl = RTS_CONTROL_DISABLE;
+    dcb.fOutxCtsFlow = FALSE;
+  }
+
+  switch (rtsMode) {
+    case SERIALPORT_RTSMODE_ENABLE:
+      dcb.fRtsControl = RTS_CONTROL_ENABLE;
+      break;
+    case SERIALPORT_RTSMODE_HANDSHAKE:
+      dcb.fRtsControl = RTS_CONTROL_HANDSHAKE;
+      break;
+    case SERIALPORT_RTSMODE_TOGGLE:
+      dcb.fRtsControl = RTS_CONTROL_TOGGLE;
+      break;
+    case SERIALPORT_RTSMODE_DISABLE:
+      dcb.fRtsControl = RTS_CONTROL_DISABLE;
+      break;
   }
 
   dcb.fBinary = true;

@@ -71,7 +71,7 @@ Napi::Value Open(const Napi::CallbackInfo& info) {
   baton->dataBits = getIntFromObject(options, "dataBits");
   baton->parity = ToParityEnum(getStringFromObj(options, "parity"));
   baton->stopBits = ToStopBitEnum(getDoubleFromObject(options, "stopBits"));
-  baton->rtscts = getBoolFromObject(options, "rtscts");
+  baton->cts = getBoolFromObject(options, "cts");
   baton->rtsMode = ToRtsModeEnum(getStringFromObj(options, "rtsMode"));
   baton->xon = getBoolFromObject(options, "xon");
   baton->xoff = getBoolFromObject(options, "xoff");
@@ -337,6 +337,8 @@ inline SerialPortRtsMode ToRtsModeEnum(const Napi::String& napistr) {
     mode = SERIALPORT_RTSMODE_HANDSHAKE;
   } else if (!strncasecmp(str, "toggle", count)) {
     mode = SERIALPORT_RTSMODE_TOGGLE;
+  } else if (!strncasecmp(str, "disable", count)) {
+	mode = SERIALPORT_RTSMODE_DISABLE;
   }
   return mode;
 }
